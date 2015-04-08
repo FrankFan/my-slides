@@ -19,9 +19,11 @@ $ npm install
 解决办法可以使用国内的源，推荐淘宝的：`https://registry.npm.taobao.org`
 
 1. 临时救急法
+
 安装时在命令行指定源
 `npm --registry=https://registry.npm.taobao.org install express`
 
 2. 一劳永逸法
+
 编辑 `~/.npmrc` 文件，加入：
 `registry = https://registry.npm.taobao.org`
