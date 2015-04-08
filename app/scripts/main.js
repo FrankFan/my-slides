@@ -20,9 +20,15 @@ require.config({
 });
 
 require([
-    'backbone'
-], function (Backbone) {
+    'models/slides',
+    'views/slide'
+], function (SlideModel, SlideView) {
     Backbone.history.start();
 
-    console.log(Backbone);
+    var slide = new SlideModel({ title: 'My First Slide'});
+    var slideView = new SlideView({ model: slide});
+
+    slideView.render();
+
+    console.log(slideView.el);
 });
