@@ -1,5 +1,10 @@
-define(['backbone', 'views/slides', 'collections/slides'], 
-    function(Backbone, SlidesView, SlidesCollection) {
+define([
+    'backbone', 
+    'views/slides', 
+    'collections/slides',
+    'router'
+], 
+function(Backbone, SlidesView, SlidesCollection, MainRouter) {
 
     var AppView = Backbone.View.extend({
 
@@ -15,6 +20,10 @@ define(['backbone', 'views/slides', 'collections/slides'],
             new SlidesView({
                 collection: new SlidesCollection(testCollection)
             });
+
+            App.router = new MainRouter();
+            // 开启Backbone路由支持
+            Backbone.history.start();
         }
     });
 

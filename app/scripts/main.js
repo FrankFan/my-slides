@@ -19,6 +19,10 @@ require.config({
 });
 
 
-require(['views/app'], function(App) {
-    new App();
+require(['views/app'], function(AppView) {
+    // 全局 namespace
+    window.App = {};
+
+    // app 入口
+    new AppView();
 });
