@@ -25,7 +25,7 @@ require([
 ], function (SlideModel, SlideView) {
     Backbone.history.start();
 
-    var slide = new SlideModel({ title: 'My First Slide'});
+    var slide = new SlideModel({ title: 'My second Slide'});
     var slideView = new SlideView({ model: slide});
 
     slideView.render();
