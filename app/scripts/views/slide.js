@@ -1,16 +1,18 @@
 define(['backbone'], function(Backbone) {
-	var Slide = Backbone.View.extend({
-		className: 'slide',
+    var Slide = Backbone.View.extend({
+        
+        el: $('.slides'),
 
-        el: '#wrapper',
+        render: function() {
+            this.$el.append(
+                '<h1>' + this.model.get('title') + '</h1>'
+            );
 
-		render: function() {
-			this.$el.html(
-				'<h1>' + this.model.get('title') + '</h1>'
-			);
-		}
-	});
+            return this;
+        }
+
+    });
 
 
-	return Slide;
+    return Slide;
 });

@@ -1,7 +1,7 @@
-define(['backbone', 'models/slide'], function(Backbone, SlideModel) {
-	var Slides = Backbone.Collection.extend({
-		model: SlideModel
-	});
+define(['backbone', 'models/slides'], function(Backbone, SlideModel) {
+    var Slides = Backbone.Collection.extend({
+        model: SlideModel
+    });
 
-	return Slides;
+    return Slides;
 });
