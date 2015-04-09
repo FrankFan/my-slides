@@ -7,10 +7,12 @@ define(['backbone'], function(Backbone) {
         },
 
         home: function() {
+            console.log('home router');
             App.Vent.trigger('init');
         },
 
         showSlide: function(slideIndex) {
+            console.log('showSlide router index is ' + slideIndex);
             App.Vent.trigger('changeSlide', {
                 slideIndex: slideIndex,
                 direction: 'next'
