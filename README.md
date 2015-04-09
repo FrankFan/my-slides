@@ -18,6 +18,14 @@ $ npm install
 `npm install` 原本使用 `https://registry.npmjs.org/` 作为源，由于国内 `GFW` 导致安装太慢甚至装不上。
 解决办法可以使用国内的源，推荐淘宝的：`https://registry.npm.taobao.org`
 
+0. proxy 代理法
+
+前提是电脑上打开全局代理，`ShadowShocks` 或者 `GoAgent`
+
+`npm install express -g --proxy http://127.0.0.1:1080`
+
+[详细参考](http://my.oschina.net/deathdealer/blog/208919)
+
 1. 临时救急法
 
 安装时在命令行指定源
