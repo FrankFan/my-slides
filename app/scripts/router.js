@@ -1,14 +1,19 @@
 define(['backbone'], function(Backbone) {
-	var Main = Backbone.Router.extend({
+    var Main = Backbone.Router.extend({
 
-		routes: {
-			'': 'home'
-		},
+        routes: {
+            '': 'home',
+            'slides/:id': 'showSlide'
+        },
 
-		home: function() {
-			alert('home route');
-		}
-	});
+        home: function() {
+            App.Vent.trigger('init');
+        },
 
-	return Main;
+        showSlide: function(slideIndex) {
+            console.log( slideIndex );
+        }
+    });
+
+    return Main;
 });

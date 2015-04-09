@@ -21,7 +21,9 @@ require.config({
 
 require(['views/app'], function(AppView) {
     // 全局 namespace
-    window.App = {};
+    window.App = {
+        Vent: _.extend({}, Backbone.Events)
+    };
 
     // app 入口
     new AppView();
