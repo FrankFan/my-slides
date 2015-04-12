@@ -25,34 +25,11 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
 
             this.setCurrentSlideIndex(opts);
 
-            
-
             newSlide = this.getNextSlide(slides);
             
-            // this.hideAllButFirst();
+            this.animateToNewSlide(slides, newSlide, opts.direction);
 
-            // transition to that slide
-            slides.filter(':visible')
-                .css('position', 'absolute') // TEMPORARY
-                .animate({
-                    top: opts.direction === 'next' ? '100%' : '-100%',
-                    opacity: 'hide'
-                }, this.transitionSpeed, function() {
-                    // slide is gone from view
-                    $(this).css('top', 0);
-
-                    // bring new slide to view                    
-                    newSlide
-                        .css('position', 'absolute') // TEMPORARY
-                        .css('top', opts.direction === 'next' ? '-100%' : '100%')
-                        .animate({
-                            top: 0,
-                            opacity: 'show'
-                        }, self.transitionSpeed);
-                });
-
-
-                App.router.navigate('sldies/' + this.currentSlideIndex);
+            App.router.navigate('sldies/' + this.currentSlideIndex);
         },
 
         setCurrentSlideIndex: function(opts) {
@@ -81,6 +58,28 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
 
         getNextSlide: function(slides) {
             return slides.eq(this.currentSlideIndex - 1);
+        },
+
+        animateToNewSlide: function(slides, newSlide, direction) {
+            // transition to that slide
+            slides.filter(':visible')
+                .css('position', 'absolute') // TEMPORARY
+                .animate({
+                    top: direction === 'next' ? '100%' : '-100%',
+                    opacity: 'hide'
+                }, this.transitionSpeed, function() {
+                    // slide is gone from view
+                    $(this).css('top', 0);
+
+                    // bring new slide to view                    
+                    newSlide
+                        .css('position', 'absolute') // TEMPORARY
+                        .css('top', direction === 'next' ? '-100%' : '100%')
+                        .animate({
+                            top: 0,
+                            opacity: 'show'
+                        }, self.transitionSpeed);
+                });
         },
 
         renderAll: function() {
