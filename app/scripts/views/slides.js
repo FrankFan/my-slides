@@ -30,7 +30,7 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
                 this.setCurrentSlideIndex(opts.direction);
             }
 
-            newSlide = slides.eq(this.currentSlideIndex - 1);
+            newSlide = this.getNextSlide(slides);
             
             // this.hideAllButFirst();
 
@@ -70,6 +70,10 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
                 this.currentSlideIndex = this.numSlides;
             }
             console.log(this.currentSlideIndex);
+        },
+
+        getNextSlide: function(slides) {
+            return slides.eq(this.currentSlideIndex - 1);
         },
 
         renderAll: function() {
