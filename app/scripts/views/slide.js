@@ -1,7 +1,7 @@
 define(['backbone'], function(Backbone) {
     var Slide = Backbone.View.extend({
         
-        el: $('.slides'),
+        className: 'slide',
 
         render: function() {
             this.$el.append(
