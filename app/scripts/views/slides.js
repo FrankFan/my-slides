@@ -5,7 +5,8 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
 
         initialize: function() {
             this.currentSlideIndex = 1;
-            this.transitionSpeed = 4000;
+            this.numSlides = this.collection.length;
+            this.transitionSpeed = 400;
 
             this.renderAll();
 
@@ -14,23 +15,24 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
         },
 
         hideAllButFirst: function() {
-
             this.$el.children(':nth-child(n+2)').hide();
         },
 
         changeSlide: function(opts) {
-            var newSlide;
+            var self = this;
             var slides = this.$el.children();
+            var newSlide;
+
             // 
             if( opts.slideIndex ) {
-                this.currentSlideIndex = ~~opts.slideIndex;
+                this.currentSlideIndex = ~~opts.slideIndex; // ~~ 和 + 作用相同，转化为number类型
             } else {
-                this.nextSlide(opts.direction);
+                this.setCurrentSlideIndex(opts.direction);
             }
 
             newSlide = slides.eq(this.currentSlideIndex - 1);
             
-            this.hideAllButFirst();
+            // this.hideAllButFirst();
 
             // transition to that slide
             slides.filter(':visible')
@@ -44,15 +46,30 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
 
                     // bring new slide to view                    
                     newSlide
+                        .css('position', 'absolute') // TEMPORARY
+                        .css('top', opts.direction === 'next' ? '-100%' : '100%')
                         .animate({
                             top: 0,
                             opacity: 'show'
-                        }, this.transitionSpeed);
-                })
+                        }, self.transitionSpeed);
+                });
+
+
+                App.router.navigate('sldies/' + this.currentSlideIndex);
         },
 
-        nextSlide: function() {
+        setCurrentSlideIndex: function(direction) {
+            this.currentSlideIndex += direction === 'next' ? 1 : -1;
 
+            if(this.currentSlideIndex > this.numSlides) {
+                // Go back to numbr 1
+                this.currentSlideIndex = 1
+            }
+
+            if(this.currentSlideIndex <= 0) {
+                this.currentSlideIndex = this.numSlides;
+            }
+            console.log(this.currentSlideIndex);
         },
 
         renderAll: function() {
