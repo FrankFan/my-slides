@@ -63,7 +63,6 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
         animateToNewSlide: function(slides, newSlide, direction) {
             // transition to that slide
             slides.filter(':visible')
-                .css('position', 'absolute') // TEMPORARY
                 .animate({
                     top: direction === 'next' ? '100%' : '-100%',
                     opacity: 'hide'
@@ -73,7 +72,6 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
 
                     // bring new slide to view                    
                     newSlide
-                        .css('position', 'absolute') // TEMPORARY
                         .css('top', direction === 'next' ? '-100%' : '100%')
                         .animate({
                             top: 0,
