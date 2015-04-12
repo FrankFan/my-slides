@@ -23,12 +23,9 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
             var slides = this.$el.children();
             var newSlide;
 
-            // 
-            if( opts.slideIndex ) {
-                this.currentSlideIndex = ~~opts.slideIndex; // ~~ 和 + 作用相同，转化为number类型
-            } else {
-                this.setCurrentSlideIndex(opts.direction);
-            }
+            this.setCurrentSlideIndex(opts);
+
+            
 
             newSlide = this.getNextSlide(slides);
             
@@ -58,15 +55,25 @@ define(['backbone', 'views/slide'], function(Backbone, SlideView) {
                 App.router.navigate('sldies/' + this.currentSlideIndex);
         },
 
-        setCurrentSlideIndex: function(direction) {
-            this.currentSlideIndex += direction === 'next' ? 1 : -1;
+        setCurrentSlideIndex: function(opts) {
 
-            if(this.currentSlideIndex > this.numSlides) {
+            // If we're requesting a special slide
+            // then set current index
+            if (opts.slideIndex) {
+                // ~~ 和 + 作用相同，转化为number类型
+                return this.currentSlideIndex = ~~opts.slideIndex;
+            }
+            // // Otherwise, just grab the next or prev slide
+            // this.setCurrentSlideIndex(opts.direction);
+
+            this.currentSlideIndex += opts.direction === 'next' ? 1 : -1;
+
+            if (this.currentSlideIndex > this.numSlides) {
                 // Go back to numbr 1
                 this.currentSlideIndex = 1
             }
 
-            if(this.currentSlideIndex <= 0) {
+            if (this.currentSlideIndex <= 0) {
                 this.currentSlideIndex = this.numSlides;
             }
             console.log(this.currentSlideIndex);
