@@ -46,7 +46,8 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}',
-                    'test/spec/**/*.js'
+                    'test/spec/**/*.js',
+                    'Gruntfile.js'
                 ]
             },
             jst: {
@@ -108,10 +109,10 @@ module.exports = function (grunt) {
                 path: 'http://localhost:<%= connect.test.options.port %>'
             }
         },
-        clean: {
-            dist: ['.tmp', '<%= yeoman.dist %>/*'],
-            server: '.tmp'
-        },
+        // clean: {
+        //     dist: ['.tmp', '<%= yeoman.dist %>/*'],
+        //     server: '.tmp'
+        // },
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
@@ -290,7 +291,7 @@ module.exports = function (grunt) {
 
         if (target === 'test') {
             return grunt.task.run([
-                'clean:server',
+                // 'clean:server',
                 'createDefaultTemplate',
                 'jst',
                 'compass:server',
@@ -301,7 +302,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
-            'clean:server',
+            // 'clean:server',
             'createDefaultTemplate',
             'jst',
             'compass:server',
@@ -314,7 +315,7 @@ module.exports = function (grunt) {
     grunt.registerTask('test', function (isConnected) {
         isConnected = Boolean(isConnected);
         var testTasks = [
-                'clean:server',
+                // 'clean:server',
                 'createDefaultTemplate',
                 'jst',
                 'compass:server',
@@ -332,7 +333,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', [
-        'clean:dist',
+        // 'clean:dist',
         'createDefaultTemplate',
         'jst',
         'compass:dist',
