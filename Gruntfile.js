@@ -320,7 +320,7 @@ module.exports = function (grunt) {
                 'jst',
                 'compass:server',
                 'connect:test',
-                'mocha',
+                // 'mocha',
             ];
 
         if(!isConnected) {
