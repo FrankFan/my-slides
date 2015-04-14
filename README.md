@@ -35,3 +35,6 @@ $ npm install
 
 编辑 `~/.npmrc` 文件，加入：
 `registry = https://registry.npm.taobao.org`
+
+
+### Backbone MVC
