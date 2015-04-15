@@ -4,7 +4,7 @@ define(['backbone', 'helpers'], function(Backbone, Helpers) {
     className: 'slide',
 
     render: function() {
-
+      
       var contentType = this.getContentType();      
 
       this['render' + Helpers.capitalize(contentType)]();
