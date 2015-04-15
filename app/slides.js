@@ -13,7 +13,7 @@ window.slides = [
 		snippet: 'snippets/ex1.css'
 	},
 	{
-		// title: 'Self Education',
+		title: '来点汉字。',
 		snippet: 'snippets/ex1.js'
 	},
 	{ image: 'http://placehold.it/600x300'},
