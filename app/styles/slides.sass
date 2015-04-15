@@ -13,8 +13,7 @@
 h1, .h1
   line-height: 1.3em
   letter-spacing: -1px
-  margin-bottom: .5em
-  font-family: 'Oswald'
+  margin-bottom: .5em  
 
 h1.x-large
   text-align: left
@@ -40,4 +39,29 @@ h1.normal
 
 .bullets li
   text-align: left
-  line-height: 1.6em  
+  line-height: 1.6em
+
+
+/* Quotes */
+.quote blockquote
+  display: inline-block
+  font-style: italic
+  text-align: left
+  margin-bottom: 0
+
+
+.quote blockquote::after,
+.quote blockquote::before
+  content: '\"'
+  font-weight: bold
+  color: #666
+
+.quote blockquote::before
+  margin-left: -15px
+
+.quote cite
+  float: right
+  color: #666
+
+.quote cite::before
+  content: '- '  
