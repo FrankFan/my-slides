@@ -35,14 +35,29 @@ define(['backbone'], function(Backbone) {
         this.renderHeading();
       }
 
+      // 对象
+      if($.isPlainObject(snippet)) {
+        return _.each(snippet, function(snippetPath, heading) {
+          self.setSnippet(snippetPath, heading);
+        });
+      }
+
+      // 字符串
+      self.setSnippet(snippet);
+
+    },
+
+    // 
+    setSnippet: function(snippetPath, heading) {
+      var self = this;
+      
       // get the snippets
-      $.get(snippet, function(snippet) {
+      $.get(snippetPath, function(snippet) {
         self.$el
           .append('<pre class="prettyprint">' + _.escape(snippet) + '</pre>');
 
         prettyPrint();
       });
-
     },
 
     renderQuote: function() {
@@ -59,7 +74,6 @@ define(['backbone'], function(Backbone) {
               '</cite>',
             '</figcaption>',
           '</figure>'
-
         ].join(''));
         // .append('<blockquote>' + this.model.get('quote') + '</blockquote>')
     },
