@@ -4,6 +4,10 @@ window.slides = [
 		title: 'Some CSS Code here',
 		snippet: 'snippets/ex1.css'
 	},
+	{
+		// title: 'Self Education',
+		snippet: 'snippets/ex1.js'
+	},
 	{ image: 'http://placehold.it/600x300'},
 	{ 
 		title: 'Why This Matters',

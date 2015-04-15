@@ -14,12 +14,13 @@ require.config({
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',
-        underscore: '../bower_components/lodash/dist/lodash'
+        underscore: '../bower_components/lodash/dist/lodash',
+        prettify: '../bower_components/google-code-prettify/src/prettify'
     }
 });
 
 
-require(['views/app'], function(AppView) {
+require(['views/app', 'prettify'], function(AppView) {
     // 全局 namespace
     window.App = {
         Vent: _.extend({}, Backbone.Events)
