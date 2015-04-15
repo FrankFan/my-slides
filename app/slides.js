@@ -1,5 +1,9 @@
 window.slides = [
 	{ title: 'My Presitation' },
+	{
+		title: 'Some CSS Code here',
+		snippet: 'snippets/ex1.css'
+	},
 	{ image: 'http://placehold.it/600x300'},
 	{ 
 		title: 'Why This Matters',
