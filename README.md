@@ -18,7 +18,7 @@ $ npm install
 `npm install` 原本使用 `https://registry.npmjs.org/` 作为源，由于国内 `GFW` 导致安装太慢甚至装不上。
 解决办法可以使用国内的源，推荐淘宝的：`https://registry.npm.taobao.org`
 
-1. proxy 代理法
+1.proxy 代理法
 
 前提是电脑上打开全局代理，`ShadowShocks` 或者 `GoAgent`
 
@@ -26,15 +26,19 @@ $ npm install
 
 [详细参考](http://my.oschina.net/deathdealer/blog/208919)
 
-2. 临时救急法
+2.临时救急法
 
 安装时在命令行指定源
 `npm --registry=https://registry.npm.taobao.org install express`
 
-3. 一劳永逸法
+3.一劳永逸法
 
 编辑 `~/.npmrc` 文件，加入：
 `registry = https://registry.npm.taobao.org`
 
 
 ### Backbone MVC
+
+- model
+- view
+- router
